@@ -1,7 +1,7 @@
 # PowerViewer
 An open source software to handle large text files efficiently
 
-As the data growing rapidly the tools and softwares should also be compatible to handle such large amount of data. There are softwares which writes GB's of log files. The traditional text viewer softwares are inefficient to handle such large amount of data. The PowerViewer has the capability to handle large text files.Theorytically it can open files having tera bytes of size however the testing is done with 20GB (Yet the performance and capability are in the phase of testing).
+As the data is growing rapidly the tools and software should also be compatible to handle such large amount of data. There are software which writes GB's of log files. The traditional text viewer software are inefficient to handle such large amount of data. The PowerViewer has the capability to handle large text files. Theoretically it can open files having terabyte of size, however the testing is done with 20GB (Yet the performance and capability are in the phase of testing for bigger files).
 
 ### Features 
 1. Version 1.0 gives the facility to open large files and view them page by page.
