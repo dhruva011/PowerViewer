@@ -1,5 +1,7 @@
 package org.power;
 
+import java.nio.Buffer;
+
 public class Worker implements Runnable {
 	
 	public void run() {
@@ -33,10 +35,10 @@ public class Worker implements Runnable {
 						
 						if(start==0) {
 							tempBuffer.shrinkTolastNewLine(tempBuffer.getBuffer());
-							tempBuffer.getBuffer().limit((int)tempBuffer.getEndByte());
+							((Buffer)tempBuffer.getBuffer()).limit((int)tempBuffer.getEndByte());
 						}
 						
-						tempBuffer.setStartByte(tempBuffer.getStartByte()+tempBuffer.getBuffer().position());
+						tempBuffer.setStartByte(tempBuffer.getStartByte()+((Buffer)tempBuffer.getBuffer()).position());
 						
 						window.getLeftQ().putFirst(tempBuffer);
 						Lock.getLockUP().notify();
@@ -59,7 +61,7 @@ public class Worker implements Runnable {
 						
 						tempBuffer.fillCompleteBuffer(Manager.getFileManager(), Manager.getBUFFER_SIZE());
 						tempBuffer.shrinkTolastNewLine(tempBuffer.getBuffer());
-						tempBuffer.setEndByte(tempBuffer.getStartByte() + tempBuffer.getBuffer().limit());
+						tempBuffer.setEndByte(tempBuffer.getStartByte() + ((Buffer)tempBuffer.getBuffer()).limit());
 						
 						window.getRightQ().putLast(tempBuffer);
 						//System.out.println("Scrolling Down");

@@ -69,6 +69,7 @@ public class PowerViewer extends JFrame implements KeyListener{
 		statusBar=new JLabel("||       PowerViewer  "+"\n",JLabel.RIGHT);
 		powerFrame.add(statusBar,BorderLayout.SOUTH);
 		powerFrame.setSize(800, 600);
+		
 		powerFrame.setVisible(true);
 	}
 	

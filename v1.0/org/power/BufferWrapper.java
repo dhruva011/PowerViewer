@@ -1,10 +1,11 @@
 package org.power;
 
 import java.io.IOException;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
 public class BufferWrapper {
-	private ByteBuffer buffer;
+	private Buffer buffer;
 	private long startByte;
 	private long endByte;
 	private String name;
@@ -24,15 +25,15 @@ public class BufferWrapper {
 	public ByteBuffer shrinkTolastNewLine(ByteBuffer buffer) {
 		int index = -1;
 		for(int i = buffer.limit()-1;i>=0;i--) {
-			buffer.position(i);
+			((Buffer)buffer).position(i);
 			if((char)buffer.get(i)=='\n') {
 				index = i;
 				break;
 			}
 		}
 		if(index>-1)
-		buffer.limit(index);
-		buffer.rewind();
+			((Buffer)buffer).limit(index);
+		((Buffer)buffer).rewind();
 		
 		this.buffer = buffer;
 		return buffer;
@@ -42,16 +43,16 @@ public class BufferWrapper {
 		int index = -1;
 		int limit = buffer.limit();
 		for(int i = 0;i<limit;i++) {
-			buffer.position(i);
+			((Buffer)buffer).position(i);
 			if((char)buffer.get(i)=='\n') {
 				index = i;
 				break;
 			}
 		}
 		if(index>-1 && index < limit)
-		buffer.position(index);
+		((Buffer)buffer).position(index);
 		//buffer.rewind();
-		buffer.limit(limit);
+		((Buffer)buffer).limit(limit);
 		
 		this.buffer = buffer;
 		return buffer;
@@ -68,11 +69,11 @@ public class BufferWrapper {
 			System.out.println("Buffer Empty.....");
 			return "";
 		}
-		int position = this.buffer.position();
+		int position = ((Buffer)this.buffer).position();
 		int limit = this.buffer.limit();
 		//System.out.println(buffer);
 		byte[] rawBytes = new byte[buffer.remaining()];
-		buffer.get(rawBytes);
+		((ByteBuffer)buffer).get(rawBytes);
 		//Get the byte from buffer
 		String s = new String(rawBytes);
 		SharedData.setData(s.trim());
@@ -81,13 +82,13 @@ public class BufferWrapper {
 		SharedData.setStartByte(this.getStartByte()+"");
 		SharedData.setEndByte(this.getEndByte()+"");
 		
-		buffer.position(position);
-		buffer.limit(limit);
+		((Buffer)buffer).position(position);
+		((Buffer)buffer).limit(limit);
 		return s;
 	}
 
 	public ByteBuffer getBuffer() {
-		return buffer;
+		return (ByteBuffer)buffer;
 	}
 	public void setBuffer(ByteBuffer buffer) {
 		this.buffer = buffer;

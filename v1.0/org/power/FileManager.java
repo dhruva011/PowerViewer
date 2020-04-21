@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -16,7 +17,7 @@ public class FileManager {
 		ByteBuffer buffer = ByteBuffer.allocate((int)(end-start+1));
 		raf.seek(start);
 		channel.read(buffer);
-		buffer.flip();
+		((Buffer)buffer).flip();
 		return buffer;
 	}
 	

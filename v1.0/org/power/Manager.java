@@ -3,6 +3,7 @@ package org.power;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.Buffer;
 
 public class Manager {
 	private static FileManager fileManager;
@@ -24,7 +25,7 @@ public class Manager {
 		current.setStartByte(0);
 		current.fillCompleteBuffer(fileManager, BUFFER_SIZE);
 		current.shrinkTolastNewLine(current.getBuffer());
-		current.setEndByte(current.getBuffer().limit());
+		current.setEndByte(((Buffer)current.getBuffer()).limit());
 		current.printBuffer();
 		//System.out.println(current);
 		
@@ -34,7 +35,7 @@ public class Manager {
 		right.setStartByte(current.getEndByte()+1);
 		right.fillCompleteBuffer(fileManager, BUFFER_SIZE);
 		right.shrinkTolastNewLine(right.getBuffer());
-		right.setEndByte(right.getStartByte()+right.getBuffer().limit());
+		right.setEndByte(right.getStartByte()+((Buffer)right.getBuffer()).limit());
 		//right.printBuffer();
 		//System.out.println(right);
 		
@@ -43,7 +44,7 @@ public class Manager {
 		rightMost.setStartByte(right.getEndByte()+1);
 		rightMost.fillCompleteBuffer(fileManager, BUFFER_SIZE);
 		rightMost.shrinkTolastNewLine(rightMost.getBuffer());
-		rightMost.setEndByte(rightMost.getStartByte()+rightMost.getBuffer().limit());
+		rightMost.setEndByte(rightMost.getStartByte()+((Buffer)rightMost.getBuffer()).limit());
 		//left.printBuffer();
 		//System.out.println(left);
 		
@@ -77,7 +78,7 @@ public class Manager {
 		current.setStartByte(0);
 		current.fillCompleteBuffer(fileManager, BUFFER_SIZE);
 		current.shrinkTolastNewLine(current.getBuffer());
-		current.setEndByte(current.getBuffer().limit());
+		current.setEndByte(((Buffer)current.getBuffer()).limit());
 		current.printBuffer();
 		//System.out.println(current);
 		
@@ -86,7 +87,7 @@ public class Manager {
 		right.setStartByte(current.getEndByte()+1);
 		right.fillCompleteBuffer(fileManager, BUFFER_SIZE);
 		right.shrinkTolastNewLine(right.getBuffer());
-		right.setEndByte(right.getStartByte()+right.getBuffer().limit());
+		right.setEndByte(right.getStartByte()+((Buffer)right.getBuffer()).limit());
 		//right.printBuffer();
 		//System.out.println(right);
 		
@@ -94,7 +95,7 @@ public class Manager {
 		rightMost.setStartByte(right.getEndByte()+1);
 		rightMost.fillCompleteBuffer(fileManager, BUFFER_SIZE);
 		rightMost.shrinkTolastNewLine(rightMost.getBuffer());
-		rightMost.setEndByte(rightMost.getStartByte()+rightMost.getBuffer().limit());
+		rightMost.setEndByte(rightMost.getStartByte()+((Buffer)rightMost.getBuffer()).limit());
 		//left.printBuffer();
 		//System.out.println(left);
 	}
