@@ -19,7 +19,7 @@ Soon Version 1.1 will be introduced with the below features
 
 
 ### Architecture 
-The core engine maintains a siding buffer technique to handle large files along with multithreading and thread synchronization. Apart from that a bulk data handling APIs are used to reduce the response time and efficient handling of data. Complete details of core engine architecture and working along with build instruction will be updated with Version 1.1
+The core engine maintains a sliding buffer technique to handle large files along with multithreading and thread synchronization. Apart from that a bulk data handling APIs are used to reduce the response time and efficient handling of data. Complete details of core engine architecture and working along with build instruction will be updated with Version 1.1
 
 ### Licensing 
 Project is under GNU v3 License
